@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="description" content="A brief description" />
+    <meta name="author" content="Insert site name" />
+    <!--CSS files -->
+    <link rel="stylesheet" href="v2.0.0/v2.0.0.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Trade Master v2.0.0</h1>
+    </header>
+    <main>
+      <!-- Calculator -->
+      <form>
+        <!-- Total Account Balance -->
+        <div>
+          <label for="accountBalance">Account Balance</label>
+          <input type="number" id="accountBalance" min="0" />
+        </div>
+        <!-- Initial Margin -->
+        <div>
+          <p>Initial Margin (10%): <span id="initialMargin" />n/a</p>
+        </div>
+        <!-- Percent at Risk -->
+        <div>
+          <label for="percentRisk">% Risk</label>
+          <input type="number" id="percentRisk" min="0" />
+        </div>
+        <!-- Dollar Amount at risk -->
+        <div>
+          <p>$ At Risk: <span id="amountRisk" />n/a</p>
+        </div>
+        <!-- Entry Level -->
+        <div>
+          <label for="entryLevel">Entry Level</label>
+          <input type="number" id="entryLevel" min="0" />
+        </div>
+        <!-- Profit Level -->
+        <div>
+          <label for="profitLevel">Profit Level</label>
+          <input type="number" id="profitLevel" min="0" />
+        </div>
+        <!-- Stop Loss-->
+        <div>
+          <label for="stopLoss">Stop Loss</label>
+          <input type="number" id="stopLoss" min="0" />
+        </div>
+        <!-- Contract Size -->
+        <div>
+          <p>Contract Size: <span id="contractSize" /> n/a</p>
+        </div>
+        <!-- Quantity to buy/sell -->
+        <div>
+          <p>Quantity: <span id="quantity" />n/a</p>
+        </div>
+        <!-- Leverage to use -->
+        <div>
+          <p>Leverage: <span id="leverage" />n/a</p>
+        </div>
+        <button type="button" onClick="calculate">Calculate</button>
+      </form>
+    </main>
+
+    <!-- JavaScript files  -->
+    <script src="./v2.0.0.js"></script>
+  </body>
+</html>

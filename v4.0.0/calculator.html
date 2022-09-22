@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="description" content="A brief description" />
+    <meta name="author" content="Insert site name" />
+
+    <!-- Open Graph Protocol-->
+    <!--
+      <meta property="og:title" content="title of the current page, not the website">
+      <meta property="og:type" content="website">
+      <meta property="og:image" content="image.png">
+      <meta property="og:url" content="https://www.mysite">
+    -->
+    <!--Additional Meta tags-->
+    <!--
+      <meta property="og:description" content="A brief description">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="Site Name"
+    -->
+
+    <!--
+      <link rel="icon" href="/favicon.ico">
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    -->
+
+    <!--CSS files -->
+    <!--  <link rel="stylesheet" href="./styles/styles.css" /> -->
+  </head>
+  <body>
+    <header>
+      <!-- Add your website name or logo here -->
+      <h1>The Trade Master 10,000</h1>
+    </header>
+    <nav>
+      <!-- Add your website navigation here -->
+    </nav>
+    <main>
+      <table class="account-monitor">
+        <tbody>
+          <tr>
+            <!-- {/* Initial Criteria */} -->
+            <td>
+              <label for="totalBalance"> Total Account balance </label>
+              <input type="number" id="totalBalance" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="amtInTradingAccnt"> $ in Trading Account (5%) </label>
+              <input type="number" id="amtInTradingAccnt" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="amtInFundingAccnt"> $ in Funding Account </label>
+              <input type="number" id="amtInFundingAccnt" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="percentRiskPerTrade"> % R / Trade </label>
+              <input type="number" id="percentRiskPerTrade" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="amtRiskPerTrade"> $ R / Trade </label>
+              <input type="number" id="amtRiskPerTrade" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="maxLossPerDay"> Max allowable Loss / Day (3R) </label>
+              <input type="number" id="maxLossPerDay" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="mazLossPerWeek">
+                Max Allowable Loss / Week (9R)
+              </label>
+              <input type="number" id="mazLossPerWeek" min="0" />
+            </td>
+          </tr>
+
+          <!-- Account Monitor -->
+          <tr>
+            <td>
+              <label for="availableTradingCapital">
+                Available Trading Capital
+              </label>
+              <input type="number" id="availableTradingCapital" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalCapitalInOrders">
+                Total Capital Locked in Orders
+              </label>
+              <input type="number" id="totalCapitalInOrders" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalPotentialRisk">
+                Total Capital Potentially At Risk
+              </label>
+              <input type="number" id="totalPotentialRisk" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalTradeExposure">
+                Total Current Trade Exposure
+              </label>
+              <input type="number" id="totalTradeExposure" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalAmtAtRisk"> Total USD Currently At Risk </label>
+              <input type="number" id="totalAmtAtRisk" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalPercentAtRisk">
+                Total % of Account Currently At Risk
+              </label>
+              <input type="number" id="totalPercentAtRisk" min="0" />
+            </td>
+          </tr>
+
+          <!-- P & L -->
+          <tr>
+            <td>
+              <label for="totalRealizedPL"> Total Realized P&L </label>
+              <input type="number" id="totalRealizedPL" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="totalUnrealizedPL"> Total Unrealized P&L </label>
+              <input type="number" id="totalUnrealizedPL" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="winLossRatio"> Win/Loss Rate </label>
+              <input type="number" id="winLossRatio" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="averageRValuePerTrade">
+                Average R Value / Trade
+              </label>
+              <input type="number" id="averageRValuePerTrade" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="averageAmtPerTrade"> Average $ R / Trade </label>
+              <input type="number" id="averageAmtPerTrade" min="0" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Calculator -->
+      <div class="flex-container">
+        <form class="calculator">
+          <!-- Base Asset - USD - It would be cool if I could select the base asset of the trading pair instead of just defaulting to USD and have all calculations update depending on that. -->
+          <!-- Asset that you are trading against  Dropdown for now, but searchable later -->
+          <div class="group">
+            <label for="asset">Asset</label>
+            <select id="asset" name="asset" required="true">
+              <option value="btc">Bitcoin</option>
+              <option value="eth">Ethereum</option>
+              <option value="xrp">Ripple</option>
+              <option value="sol">Solana</option>
+            </select>
+          </div>
+          <!-- Initial Margin - excluding maintenance margin - this is your initial Trade Exposure based off of criteria set in account overview, but also customizable. maybe alert user of the % of account @ risk-->
+          <div class="group">
+            <label for="initialMargin">Initial Margin</label>
+            <input type="number" id="initialMargin" min="0" />
+          </div>
+          <!-- Percent at Risk - use default value from above, but allow it to be changed -->
+          <div class="group">
+            <label for="percentRisk">% Risk</label>
+            <input type="number" id="percentRisk" min="0" />
+          </div>
+          <!-- Dollar Amount (or whatever currency) at risk -->
+          <div class="group">
+            <label for="amountRisk">$ Risk</label>
+            <input type="number" id="amountRisk" min="0" />
+          </div>
+          <!-- Long or Short?
+          default is long. do you need else if statement to create the functionality? some calculations are based off of whether you are going long or short -->
+          <div class="group">
+            <label for="longShort">Long/Short</label>
+            <label class="switch">
+              <input type="checkbox" id="longShort" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <!-- Entry Level -->
+          <div class="group">
+            <label for="entryLevel">Entry Level</label>
+            <input type="number" id="entryLevel" min="0" />
+          </div>
+          <!-- Profit Level -->
+          <div class="group">
+            <label for="profitLevel">Profit Level</label>
+            <select id="profitLevel" name="profitLevel">
+              <option value="price">Price</option>
+              <option value="percentage">Percentage</option>
+              <option value="rvalue">R Value</option>
+              <option value="atr">ATR Value</option>
+            </select>
+            <input type="number" id="profitLevel" min="0" />
+          </div>
+          <!-- Stop Loss-->
+          <div class="group">
+            <label for="stopLoss">Stop Loss</label>
+            <select id="stopLoss" name="stopLoss">
+              <option value="price">Price</option>
+              <option value="percentage">Percentage</option>
+              <option value="amount">$ Amount</option>
+              <option value="atr">ATR Value</option>
+            </select>
+            <input type="number" id="stopLoss" min="0" />
+          </div>
+          <!-- Stop % distance from entry -->
+          <div class="group">
+            <label for="stopFromEntry">Stop % from entry</label>
+            <input type="number" id="stopFromEntry" min="0" />
+          </div>
+          <!-- Quantity to buy/sell -->
+          <div class="group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" min="0" />
+          </div>
+          <!-- Contract Size -->
+          <div class="group">
+            <label for="contractSize">Contract Size</label>
+            <input type="number" id="contractSize" min="0" />
+          </div>
+          <!-- Leverage to use -->
+          <div class="group">
+            <label for="leverage">Leverage</label>
+            <input type="number" id="leverage" min="0" />
+          </div>
+          <!-- Liquidation Price -->
+          <div class="group">
+            <label for="liquidationPrice">Liquidation Price</label>
+            <input type="number" id="liquidationPrice" min="0" />
+          </div>
+          <!-- Liquidation % from Entry Level -->
+          <div class="group">
+            <label for="liquidationPercentDistance"
+              >Liquidation % From Entry</label
+            >
+            <input type="number" id="liquidationPercentDistance" min="0" />
+          </div>
+          <!-- Fee To Open -->
+          <div class="group">
+            <label for="feeToOpen">Fee To Open</label>
+            <input type="number" id="feeToOpen" min="0" />
+          </div>
+          <!-- Fee To Close -->
+          <div class="group">
+            <label for="feeToClose">Fee To Close</label>
+            <input type="number" id="feeToClose" min="0" />
+          </div>
+          <!-- Maintenance Margin -->
+          <div class="group">
+            <label for="maintenanceMargin">Maintenance Margin</label>
+            <input type="number" id="maintenanceMargin" min="0" />
+          </div>
+          <!-- Total Order Cost -->
+          <div class="group">
+            <label for="totalOrderCost">Total Order Cost</label>
+            <input type="number" id="totalOrderCost" min="0" />
+          </div>
+          <!-- Actual dollar amount at risk - includes all fees-->
+          <div class="group">
+            <label for="amountAtRisk">Actual $R (at risk)</label>
+            <input type="number" id="amountAtRisk" min="0" />
+          </div>
+
+          <!-- TRADE EXIT TARGETS -->
+          <!-- Target Risk to Reward based off of trade criteria above -->
+          <div class="group">
+            <label for="targetRiskToReward">Target R/R Ratio</label>
+            <input type="number" id="targetRiskToReward" min="0" />
+          </div>
+          <!-- Target % change - entry compared to exit -->
+          <div class="group">
+            <label for="targetPercentChange">Target % Change</label>
+            <input type="number" id="targetPercentChange" min="0" />
+          </div>
+          <!-- Target net earnings - total before fees -->
+          <div class="group">
+            <label for="targetNetEarnings">Target Net Earnings</label>
+            <input type="number" id="targetNetEarnings" min="0" />
+          </div>
+          <!-- Target ROI - return minus fees -->
+          <div class="group">
+            <label for="targetRoi">Target ROI</label>
+            <input type="number" id="targetRoi" min="0" />
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- JavaScript files  -->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

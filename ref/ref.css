@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 4px;
+}
