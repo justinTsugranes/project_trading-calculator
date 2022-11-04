@@ -41,6 +41,9 @@ const calc = () => {
   const leverage = contractSize / initialMargin
 */
 
+// toFixed() returns a string, with the number written with a specified number of decimals
+// toPrecision() returns a string, with a number written with a specified length
+
 function calcMargin() {
   accountBalance = Number(document.getElementById('accountBalance').value)
   initialMarginPercent =

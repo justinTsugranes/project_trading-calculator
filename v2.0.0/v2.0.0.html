@@ -18,148 +18,146 @@
       <!-- Calculator -->
       <!-- TODO determine proper form action -->
       <form action="/action_page.php" method="post">
-        <fieldset>
-          <legend>Calculator</legend>
-          <!-- Total Account Balance -->
-          <div>
-            <label for="accountBalance">Account Balance</label>
-            <input
-              type="number"
-              id="accountBalance"
-              name="accountBalance"
-              size="10"
-              min="0"
-              placeholder="0.00"
-              required
-              autofocus
-            />
-          </div>
+        <legend>Calculator</legend>
+        <!-- Total Account Balance -->
+        <div>
+          <label for="accountBalance">Account Balance</label>
+          <input
+            type="number"
+            id="accountBalance"
+            name="accountBalance"
+            size="10"
+            min="0"
+            placeholder="0.00"
+            required
+            autofocus
+          />
+        </div>
 
-          <!-- Initial Margin -->
-          <div>
-            <label for="initialMarginPercent">Initial Margin %</label>
-            <input
-              type="number"
-              id="initialMarginPercent"
-              name="initialMarginPercent"
-              size="4"
-              min="0"
-              maxlength="4"
-              value=".20"
-            />
-            <p>Initial Margin: $ <span id="initialMargin" required />n/a</p>
-          </div>
-          <button type="button" onClick="calcMargin()">Calculate Margin</button>
+        <!-- Initial Margin -->
+        <div>
+          <label for="initialMarginPercent">Initial Margin %</label>
+          <input
+            type="number"
+            id="initialMarginPercent"
+            name="initialMarginPercent"
+            size="4"
+            min="0"
+            maxlength="4"
+            value=".20"
+          />
+          <p>Initial Margin: $ <span id="initialMargin" required />n/a</p>
+        </div>
+        <button type="button" onClick="calcMargin()">Calculate Margin</button>
 
-          <!-- Percent at Risk -->
-          <div>
-            <label for="percentRisk">% Risk</label>
-            <input
-              type="number"
-              id="percentRisk"
-              name="percentRisk"
-              size="4"
-              min="0"
-              maxlength="4"
-              value="0.02"
-              required
-            />
-          </div>
+        <!-- Percent at Risk -->
+        <div>
+          <label for="percentRisk">% Risk</label>
+          <input
+            type="number"
+            id="percentRisk"
+            name="percentRisk"
+            size="4"
+            min="0"
+            maxlength="4"
+            value="0.02"
+            required
+          />
+        </div>
 
-          <!-- Dollar Amount at risk -->
-          <div>
-            <p>$ At Risk: <span id="amountRisk" />n/a</p>
-          </div>
-          <button type="button" onClick="calcAmountRisk()">
-            Calculate $ At Risk
+        <!-- Dollar Amount at risk -->
+        <div>
+          <p>$ At Risk: <span id="amountRisk" />n/a</p>
+        </div>
+        <button type="button" onClick="calcAmountRisk()">
+          Calculate $ At Risk
+        </button>
+
+        <!-- Asset -->
+        <label for="asset">Asset</label>
+        <input list="assets" name="asset" autocomplete="on" />
+        <datalist id="assets">
+          <option value="btc" selected>Bitcoin</option>
+          <option value="eth">Ethereum</option>
+          <option value="sol">Solana</option>
+          <option value="xrp">Ripple</option>
+        </datalist>
+
+        <!-- Entry Level -->
+        <div>
+          <label for="entryLevel">Entry Level</label>
+          <input
+            type="number"
+            id="entryLevel"
+            name="entryLevel"
+            size="7"
+            min="0"
+            maxlength="4"
+            placeholder="0.00"
+            required
+          />
+        </div>
+        <!-- Profit Level -->
+        <div>
+          <label for="profitLevel">Profit Level</label>
+          <input
+            type="number"
+            id="profitLevel"
+            name="profitLevel"
+            size="7"
+            min="0"
+            placeholder="0.00"
+            required
+          />
+        </div>
+
+        <!-- Stop Loss-->
+        <div>
+          <label for="stopLoss">Stop Loss</label>
+          <input
+            type="number"
+            id="stopLoss"
+            name="stopLoss"
+            size="7"
+            min="0"
+            placeholder="0.00"
+            required
+          />
+        </div>
+
+        <!-- Stop From Entry -->
+        <div>
+          <p>Stop % From Entry: <span id="stopFromEntry" required /> n/a</p>
+        </div>
+        <button type="button" onClick="stopFromEntry()">
+          Calculate stopFromEntry
+        </button>
+
+        <!-- Contract Size -->
+        <div>
+          <p>Contract Size: <span id="contractSize" /> n/a</p>
+          <button type="button" onClick="calcContractSize()">
+            Calculate contractSize
           </button>
+        </div>
 
-          <!-- Asset -->
-          <label for="asset">Asset</label>
-          <input list="assets" name="asset" autocomplete="on" />
-          <datalist id="assets">
-            <option value="btc" selected>Bitcoin</option>
-            <option value="eth">Ethereum</option>
-            <option value="sol">Solana</option>
-            <option value="xrp">Ripple</option>
-          </datalist>
+        <!-- Quantity to buy/sell -->
+        <div>
+          <p>Quantity: <span id="quantity" />n/a</p>
+        </div>
+        <button type="button" onClick="calcQuantity()">
+          Calculate Quantity
+        </button>
 
-          <!-- Entry Level -->
-          <div>
-            <label for="entryLevel">Entry Level</label>
-            <input
-              type="number"
-              id="entryLevel"
-              name="entryLevel"
-              size="7"
-              min="0"
-              maxlength="4"
-              placeholder="0.00"
-              required
-            />
-          </div>
-          <!-- Profit Level -->
-          <div>
-            <label for="profitLevel">Profit Level</label>
-            <input
-              type="number"
-              id="profitLevel"
-              name="profitLevel"
-              size="7"
-              min="0"
-              placeholder="0.00"
-              required
-            />
-          </div>
-
-          <!-- Stop Loss-->
-          <div>
-            <label for="stopLoss">Stop Loss</label>
-            <input
-              type="number"
-              id="stopLoss"
-              name="stopLoss"
-              size="7"
-              min="0"
-              placeholder="0.00"
-              required
-            />
-          </div>
-
-          <!-- Stop From Entry -->
-          <div>
-            <p>Stop % From Entry: <span id="stopFromEntry" required /> n/a</p>
-          </div>
-          <button type="button" onClick="stopFromEntry()">
-            Calculate stopFromEntry
-          </button>
-
-          <!-- Contract Size -->
-          <div>
-            <p>Contract Size: <span id="contractSize" /> n/a</p>
-            <button type="button" onClick="calcContractSize()">
-              Calculate contractSize
-            </button>
-          </div>
-
-          <!-- Quantity to buy/sell -->
-          <div>
-            <p>Quantity: <span id="quantity" />n/a</p>
-          </div>
-          <button type="button" onClick="calcQuantity()">
-            Calculate Quantity
-          </button>
-
-          <!-- Leverage -->
-          <div>
-            <p>Leverage: <span id="leverage" />n/a</p>
-          </div>
-          <button type="button" onClick="calcLeverage()">
-            Calculate Leverage
-          </button>
-          <!-- Reset all values -->
-          <input type="reset" />
-        </fieldset>
+        <!-- Leverage -->
+        <div>
+          <p>Leverage: <span id="leverage" />n/a</p>
+        </div>
+        <button type="button" onClick="calcLeverage()">
+          Calculate Leverage
+        </button>
+        <!-- Reset all values -->
+        <input type="reset" />
       </form>
     </main>
 
